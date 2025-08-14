@@ -20,11 +20,20 @@ export class HomeComponent {
   ) {
     this.route.queryParamMap.forEach((paramMap) => {
       const city = paramMap.get('city');
-      if (city === null)
-        this.housingLocations = this.housingService.getAllHousingLocations();
-      else
-        this.housingLocations =
-          this.housingService.filterHousingLocationByCity(city);
+      if (city === null) {
+        this.housingService
+          .getAllHousingLocations()
+          .then((result: HousingLocationInfo[]) => {
+            this.housingLocations = result;
+          });
+      } else {
+        this.housingService
+          .getAllHousingLocations()
+          .then((result: HousingLocationInfo[]) => {
+            this.housingLocations =
+              this.housingService.filterHousingLocationByCity(city);
+          });
+      }
     });
   }
 

@@ -8,17 +8,25 @@ import {
   providedIn: 'root',
 })
 export class HousingService {
-  housingLocationList: HousingLocationInfo[] = [...housingLocationList];
-  constructor() {}
+  url = 'http://localhost:3000/locations';
+  housingLocationList: HousingLocationInfo[] = [];
 
-  getAllHousingLocations(): HousingLocationInfo[] {
+  constructor() {
+    console.log('housing constructor');
+  }
+
+  async getAllHousingLocations(): Promise<HousingLocationInfo[]> {
+    console.log('fetching...');
+    this.housingLocationList = await (await fetch(this.url)).json();
     return this.housingLocationList;
   }
+
   getHousingLocationById(id: number): HousingLocationInfo | undefined {
     return this.housingLocationList.find(
       (housingLocation) => housingLocation.id === id
     );
   }
+
   filterHousingLocationByCity(city: string): HousingLocationInfo[] {
     const regex = new RegExp(city, 'i');
     return this.housingLocationList.filter((val) => {
