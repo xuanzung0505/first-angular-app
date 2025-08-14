@@ -11,20 +11,17 @@ export class HousingService {
   url = 'http://localhost:3000/locations';
   housingLocationList: HousingLocationInfo[] = [];
 
-  constructor() {
-    console.log('housing constructor');
-  }
+  constructor() {}
 
   async getAllHousingLocations(): Promise<HousingLocationInfo[]> {
-    console.log('fetching...');
     this.housingLocationList = await (await fetch(this.url)).json();
     return this.housingLocationList;
   }
 
-  getHousingLocationById(id: number): HousingLocationInfo | undefined {
-    return this.housingLocationList.find(
-      (housingLocation) => housingLocation.id === id
-    );
+  async getHousingLocationById(
+    id: number
+  ): Promise<HousingLocationInfo | undefined> {
+    return await (await fetch(`${this.url}/${id}`)).json();
   }
 
   filterHousingLocationByCity(city: string): HousingLocationInfo[] {
