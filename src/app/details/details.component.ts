@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HousingLocationInfo } from '../models/housinglocation';
+import { HousingService } from '../services/housing.service';
 
 @Component({
   selector: 'app-details',
@@ -7,14 +9,17 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent implements OnInit {
-  housingLocationId: number = -1;
-  constructor(private route: ActivatedRoute) {}
+  housingLocation: HousingLocationInfo | undefined = undefined;
+
+  constructor(
+    private route: ActivatedRoute,
+    private housingService: HousingService
+  ) {}
 
   ngOnInit(): void {
-    // First get the product id from the current route.
     const routeParams = this.route.snapshot.paramMap;
-    const housingId = Number(routeParams.get('id'));
-    this.housingLocationId = housingId;
-    // Find the product that correspond with the id provided in route.
+    const housingLocationId = Number(routeParams.get('id'));
+    this.housingLocation =
+      this.housingService.getHousingLocationById(housingLocationId);
   }
 }

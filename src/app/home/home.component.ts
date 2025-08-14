@@ -11,7 +11,9 @@ import { HousingService } from '../services/housing.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  housingLocations: HousingLocationInfo[] = [...housingLocationList];
+  housingLocations: HousingLocationInfo[] = [];
 
-  constructor(private housingService: HousingService) {}
+  constructor(private housingService: HousingService) {
+    this.housingLocations = housingService.getAllHousingLocations();
+  }
 }
