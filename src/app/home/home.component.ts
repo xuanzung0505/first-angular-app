@@ -3,6 +3,7 @@ import {
   HousingLocationInfo,
   housingLocationList,
 } from '../models/housinglocation';
+import { HousingService } from '../services/housing.service';
 
 @Component({
   selector: 'app-home',
@@ -11,4 +12,6 @@ import {
 })
 export class HomeComponent {
   housingLocations: HousingLocationInfo[] = [...housingLocationList];
+
+  constructor(private housingService: HousingService) {}
 }
