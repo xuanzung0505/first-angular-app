@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { HousingLocationComponent } from './housing-location/housing-location.component';
 import { DetailsComponent } from './details/details.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TranslationModule } from './modules/translation.module';
+import { TranslationModule } from './modules/translations.module';
 
 @NgModule({
   declarations: [
