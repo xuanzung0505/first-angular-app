@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { HousingLocationComponent } from './housing-location/housing-location.component';
 import { DetailsComponent } from './details/details.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TranslationModule } from './modules/translation.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     HousingLocationComponent,
     DetailsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    TranslationModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
