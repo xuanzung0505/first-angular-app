@@ -6,13 +6,18 @@ import translationsVi from '../../assets/i18n/vi.json';
   providedIn: 'root',
 })
 export class LocalTranslateService {
+  languages: string[] = ['en', 'vi'];
   defaultLang: string = 'en';
-  lang: string = 'vi';
 
   constructor(private translate: TranslateService) {
-    this.translate.addLangs(['en', 'vi']);
+    this.translate.addLangs(this.languages);
     this.translate.setTranslation('vi', translationsVi);
     this.translate.setDefaultLang(this.defaultLang);
-    this.translate.use(this.lang);
   }
+
+  getCurrentLanguage = () => this.translate.currentLang;
+
+  changeCurrentLanguage = (toLang: string) => {
+    this.translate.use(toLang);
+  };
 }
