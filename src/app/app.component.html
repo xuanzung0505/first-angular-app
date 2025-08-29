@@ -1,26 +1,26 @@
 <main>
-  <a [routerLink]="['/']">
-    <header class="brand-name">
+  <header class="brand-name">
+    <a [routerLink]="['/']">
       <img
         class="brand-logo"
         src="/assets/logo.svg"
         alt="logo"
         aria-hidden="true"
       />
-      <select
-        class="language-picker"
-        value="{{ currentLanguage }}"
-        id="languages"
-        (change)="changeCurrentLang($event)"
-      >
-        <div *ngFor="let lang of languages">
-          <option value="{{ lang }}">
-            {{ lang }}
-          </option>
-        </div>
-      </select>
-    </header>
-  </a>
+    </a>
+    <select
+      class="language-picker"
+      value="{{ currentLanguage }}"
+      id="languages"
+      (change)="changeCurrentLang($event)"
+    >
+      <div *ngFor="let lang of languages">
+        <option value="{{ lang }}">
+          {{ lang }}
+        </option>
+      </div>
+    </select>
+  </header>
   <section class="content">
     <router-outlet></router-outlet>
   </section>
